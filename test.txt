@@ -1,0 +1,152 @@
+import javax.swing.*;  
+import java.awt.event.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;  
+public class Main implements ActionListener{  
+JLabel l1,l2;  
+JTextArea area;  
+JButton a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;  
+Main() {  
+    JFrame fr= new JFrame();  
+    l1=new JLabel();  
+    l1.setBounds(50,25,100,30);  
+    l2=new JLabel();  
+    l2.setBounds(160,25,100,30);  
+    /*area=new JTextArea();  
+    area.setBounds(20,75,250,200); */ 
+    a=new JButton("A");  
+    a.setBounds(50,300,45,30);  
+    a.addActionListener(this);
+    
+    b=new JButton("B");
+    b.setBounds(100,300,45,30);  
+    b.addActionListener(this);
+    
+    c=new JButton("C");  
+    c.setBounds(150,300,45,30);  
+    c.addActionListener(this);
+    
+    d=new JButton("D");  
+    d.setBounds(200,300,45,30);  
+    d.addActionListener(this);
+    
+    e=new JButton("E");  
+    e.setBounds(250,300,45,30);  
+    e.addActionListener(this);
+    
+    f=new JButton("F");  
+    f.setBounds(300,300,45,30);  
+    f.addActionListener(this);
+    
+    g=new JButton("G");
+    g.setBounds(350,300,45,30);  
+    g.addActionListener(this);
+    
+    h=new JButton("H");  
+    h.setBounds(400,300,45,30);  
+    h.addActionListener(this);
+    
+    i=new JButton("I");  
+    i.setBounds(450,300,45,30);  
+    i.addActionListener(this);
+    
+    j=new JButton("J");  
+    j.setBounds(500,300,45,30);  
+    j.addActionListener(this);
+    
+    k=new JButton("A");  
+    k.setBounds(50,300,45,30);  
+    k.addActionListener(this);
+    
+    l=new JButton("B");
+    l.setBounds(100,300,45,30);  
+    l.addActionListener(this);
+    
+    m=new JButton("M");  
+    m.setBounds(150,300,45,30);  
+    m.addActionListener(this);
+    
+    n=new JButton("N");  
+    n.setBounds(200,300,45,30);  
+    n.addActionListener(this);
+    
+    o=new JButton("O");  
+    o.setBounds(250,300,45,30);  
+    o.addActionListener(this);
+    
+    p=new JButton("P");  
+    p.setBounds(300,300,45,30);  
+    p.addActionListener(this);
+    
+    q=new JButton("Q");
+    q.setBounds(350,300,45,30);  
+    q.addActionListener(this);
+    
+    r=new JButton("R");  
+    r.setBounds(400,300,45,30);  
+    r.addActionListener(this);
+    
+    s=new JButton("S");  
+    s.setBounds(450,300,45,30);  
+    s.addActionListener(this);
+    
+    t=new JButton("T");  
+    t.setBounds(500,300,45,30);  
+    t.addActionListener(this);
+    
+    u=new JButton("U");  
+    u.setBounds(550,300,45,30);  
+    u.addActionListener(this);
+    
+    v=new JButton("V");
+    v.setBounds(600,300,45,30);  
+    v.addActionListener(this);
+    
+    w=new JButton("W");  
+    w.setBounds(650,300,46,30);  
+    w.addActionListener(this);
+    
+    x=new JButton("X");  
+    x.setBounds(700,300,45,30);  
+    x.addActionListener(this);
+    
+    y=new JButton("Y");  
+    y.setBounds(750,300,45,30);  
+    y.addActionListener(this);
+    
+    z=new JButton("Z");  
+    z.setBounds(800,300,45,30);  
+    z.addActionListener(this);
+    
+    fr.add(l1);fr.add(l2);
+    //f.add(area);
+    fr.add(a);fr.add(b);fr.add(c);fr.add(d);fr.add(e);fr.add(f);fr.add(g);fr.add(h);fr.add(i);fr.add(j);fr.add(k);fr.add(l);fr.add(m);
+    fr.add(n);fr.add(o);fr.add(p);fr.add(q);fr.add(r);fr.add(s);fr.add(t);fr.add(u);fr.add(v);fr.add(w);fr.add(x);fr.add(y);fr.add(z);
+    fr.setSize(450,450);  
+    fr.setLayout(null);  
+    fr.setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){ 
+	String text="";
+    //String text=area.getText();  
+    //String words[]=text.split("\\s");
+    if(e.getSource()==a){ 
+    //l1.setText("Words: "+words.length);  
+    //l2.setText("Characters: "+text.length());
+    }
+    else
+    {
+    	try {
+    		text = Files.readAllLines(Paths.get("src/a.txt")).get(3);
+    	} catch (IOException er) {
+    		// TODO Auto-generated catch block
+    		er.printStackTrace();
+    	}
+    	l1.setText(text);
+    }
+}  
+public static void main(String[] args) {  
+    new Main();  
+}  
+}  
