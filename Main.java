@@ -1,21 +1,32 @@
-import javax.swing.*;  
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import java.awt.Graphics;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Random;
 import java.lang.*;
-public class Main implements ActionListener{  
-	JLabel l1,l2,l3;   
+public class Main implements ActionListener{
+	int score=0;
+	String gword="";
+	JLabel l1,l2,l3,lscore,guessedword;   
 	JButton a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;  
 	Main(String st, String st2) {  
-		JFrame fr= new JFrame();  
+		JFrame fr= new JFrame();
+		lscore=new JLabel();  
+		lscore.setBounds(40,25,100,30);
 		l1=new JLabel();  
-		l1.setBounds(50,25,100,30);
+		l1.setBounds(600,25,100,30);
+		guessedword=new JLabel();  
+		guessedword.setBounds(40,60,100,30);
 		l2=new JLabel();  
-		l2.setBounds(160,25,100,30); 
+		l2.setBounds(600,70,100,30); 
 		l3=new JLabel();  
-		l3.setBounds(250,25,100,30);  
+		l3.setBounds(600,50,100,30);  
 
 		a=new JButton("A");  
 		a.setBounds(50,300,45,30);  
@@ -121,14 +132,16 @@ public class Main implements ActionListener{
 		z.setBounds(1300,300,45,30);  
 		z.addActionListener(this);
 
-		fr.add(l1);fr.add(l2);fr.add(l3);
+		fr.add(l1);fr.add(l2);fr.add(l3);fr.add(lscore);fr.add(guessedword);
 		fr.add(a);fr.add(b);fr.add(c);fr.add(d);fr.add(e);fr.add(f);fr.add(g);fr.add(h);fr.add(i);fr.add(j);fr.add(k);fr.add(l);fr.add(m);
 		fr.add(n);fr.add(o);fr.add(p);fr.add(q);fr.add(r);fr.add(s);fr.add(t);fr.add(u);fr.add(v);fr.add(w);fr.add(x);fr.add(y);fr.add(z);
-		fr.setSize(450,450);  
+		fr.setSize(1450,550);  
 		fr.setLayout(null);  
 		fr.setVisible(true);
 		l1.setText(st);
-		l3.setText(st2);
+		l3.setText("HINT: "+st);
+		guessedword.setText(st2);
+		gword=st2;
 	}  
 	public void actionPerformed(ActionEvent e){ 
 		String word="";
@@ -267,20 +280,33 @@ public class Main implements ActionListener{
 		// TODO Auto-generated method stub
 		int ij;
 		boolean c=false;
+		char[] t= gword.toCharArray();
 		for(ij=0;ij<=d2.length()-1;ij++)
 			if(d2.charAt(ij)==ch)
 			{
+				t[ij]=ch;
 				c=true;
 			}
+		gword=String.valueOf(t);
 		if(c==true)
 		{
-			l2.setText("present" +d2);
+			score++;
+			l2.setText("present" +gword);
+			lscore.setText("Score: "+score);
 		}
 		else
 		{
-			l2.setText("not present" +d2);
+			score--;
+			//l2.setText("not present" +d2);
+			lscore.setText("Score: "+score);
 		}
 	}
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		String text="",text2="",text1="";
 		int randno;
@@ -297,13 +323,11 @@ public class Main implements ActionListener{
 	}
 	private static String blankgen(String text2) {
 		int i;
-		StringBuilder sb=new StringBuilder(text2);
+		//StringBuilder sb=new StringBuilder(text2);
 		char[] t2= text2.toCharArray();
 		for(i=0;i<=text2.length()-1;i=i+2)
 			t2[i]='-';
 		String c=String.valueOf(t2);
 		return c;
-		// TODO Auto-generated method stub
-		
 	}  
 }  
