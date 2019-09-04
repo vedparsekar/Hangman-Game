@@ -2,16 +2,20 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;  
+import java.nio.file.Paths;
+import java.util.Random;
+import java.lang.*;
 public class Main implements ActionListener{  
-	JLabel l1,l2;   
+	JLabel l1,l2,l3;   
 	JButton a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;  
-	Main(String st) {  
+	Main(String st, String st2) {  
 		JFrame fr= new JFrame();  
 		l1=new JLabel();  
-		l1.setBounds(50,25,100,30);  
+		l1.setBounds(50,25,100,30);
 		l2=new JLabel();  
-		l2.setBounds(160,25,100,30);  
+		l2.setBounds(160,25,100,30); 
+		l3=new JLabel();  
+		l3.setBounds(250,25,100,30);  
 
 		a=new JButton("A");  
 		a.setBounds(50,300,45,30);  
@@ -117,20 +121,20 @@ public class Main implements ActionListener{
 		z.setBounds(1300,300,45,30);  
 		z.addActionListener(this);
 
-		fr.add(l1);fr.add(l2);
+		fr.add(l1);fr.add(l2);fr.add(l3);
 		fr.add(a);fr.add(b);fr.add(c);fr.add(d);fr.add(e);fr.add(f);fr.add(g);fr.add(h);fr.add(i);fr.add(j);fr.add(k);fr.add(l);fr.add(m);
 		fr.add(n);fr.add(o);fr.add(p);fr.add(q);fr.add(r);fr.add(s);fr.add(t);fr.add(u);fr.add(v);fr.add(w);fr.add(x);fr.add(y);fr.add(z);
 		fr.setSize(450,450);  
 		fr.setLayout(null);  
 		fr.setVisible(true);
 		l1.setText(st);
+		l3.setText(st2);
 	}  
 	public void actionPerformed(ActionEvent e){ 
 		String word="";
 		if(e.getSource()==a){ 
 			word =l1.getText();
 			charcheck(word,'a');
-			
 		}
 		else
 			if(e.getSource()==b){ 
@@ -276,16 +280,30 @@ public class Main implements ActionListener{
 		{
 			l2.setText("not present" +d2);
 		}
-
 	}
-	public static void main(String[] args) { 
-		String text="";
+	public static void main(String[] args) {
+		String text="",text2="",text1="";
+		int randno;
+		Random rand =new Random();
+		randno=rand.nextInt(9);
 		try {
-			text = Files.readAllLines(Paths.get("src/a.txt")).get(3);
+			text = Files.readAllLines(Paths.get("src/a.txt")).get(randno);
+			text1=text;
+			text2=blankgen(text1);
 		} catch (IOException er) {
 			er.printStackTrace();
 		}
-		new Main(text);
+		new Main(text,text2);
+	}
+	private static String blankgen(String text2) {
+		int i;
+		StringBuilder sb=new StringBuilder(text2);
+		char[] t2= text2.toCharArray();
+		for(i=0;i<=text2.length()-1;i=i+2)
+			t2[i]='-';
+		String c=String.valueOf(t2);
+		return c;
+		// TODO Auto-generated method stub
 		
 	}  
 }  
