@@ -17,6 +17,11 @@ public class Main implements ActionListener{
 	JButton a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;  
 	Main(String st, String st2) {  
 		JFrame fr= new JFrame();
+		
+		Icon samicon1=new ImageIcon("main.jpg");
+		JButton sample = new JButton(samicon1);  
+		sample.setBounds(520,90,200,200);
+		
 		lscore=new JLabel();  
 		lscore.setBounds(40,25,100,30);
 		l1=new JLabel();  
@@ -131,7 +136,8 @@ public class Main implements ActionListener{
 		z=new JButton("Z");  
 		z.setBounds(1300,300,45,30);  
 		z.addActionListener(this);
-
+		
+		fr.add(sample);
 		fr.add(l1);fr.add(l2);fr.add(l3);fr.add(lscore);fr.add(guessedword);
 		fr.add(a);fr.add(b);fr.add(c);fr.add(d);fr.add(e);fr.add(f);fr.add(g);fr.add(h);fr.add(i);fr.add(j);fr.add(k);fr.add(l);fr.add(m);
 		fr.add(n);fr.add(o);fr.add(p);fr.add(q);fr.add(r);fr.add(s);fr.add(t);fr.add(u);fr.add(v);fr.add(w);fr.add(x);fr.add(y);fr.add(z);
